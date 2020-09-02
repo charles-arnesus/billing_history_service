@@ -1,15 +1,29 @@
 package com.charles.billing_history_service.models;
 
+import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "billing_history")
 public class Bill {
+    @Id
+    @Column(name = "order_id")
     private String orderId;
+    @Column(name = "user_id")
     private String userId;
+    @Column(name = "biller_id")
     private String billerId;
+    @Column(name = "status")
     private String status;
+    @Column(name = "total_amount")
     private Double totalAmount;
+    @Column(name = "created_date_time")
     private LocalDateTime createdDateTime;
+    @Column(name = "updated_date_time")
     private LocalDateTime updatedDateTime;
+    @Column(name = "payment_date")
+    private LocalDate paymentDate;
 
     public Bill() {
 
@@ -21,7 +35,8 @@ public class Bill {
                 String status,
                 Double totalAmount,
                 LocalDateTime createdDateTime,
-                LocalDateTime updatedDateTime) {
+                LocalDateTime updatedDateTime,
+                LocalDate paymentDate) {
         this.orderId = orderId;
         this.userId = userId;
         this.billerId = billerId;
@@ -29,6 +44,7 @@ public class Bill {
         this.totalAmount = totalAmount;
         this.createdDateTime = createdDateTime;
         this.updatedDateTime = updatedDateTime;
+        this.paymentDate = paymentDate;
     }
 
     public String getOrderId() {
@@ -85,5 +101,13 @@ public class Bill {
 
     public void setUpdatedDateTime(LocalDateTime updatedDateTime) {
         this.updatedDateTime = updatedDateTime;
+    }
+
+    public LocalDate getPaymentDate() {
+        return paymentDate;
+    }
+
+    public void setPaymentDate(LocalDate paymentDate) {
+        this.paymentDate = paymentDate;
     }
 }
