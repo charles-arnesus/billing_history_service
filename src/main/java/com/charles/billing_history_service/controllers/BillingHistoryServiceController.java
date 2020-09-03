@@ -16,12 +16,14 @@ import java.util.List;
 @RequestMapping("/api")
 public class BillingHistoryServiceController {
 
+    public static final String USER_ID = "user-id";
+
     @Autowired
     private BillRepository billRepository;
 
-    @GetMapping("/history/{userId}")
-    public Bills getAllBillHistory(@PathVariable("userId") String userId) {
-        List<Bill> billList = billRepository.findAllByUserId(userId);
+    @GetMapping("/history/")
+    public Bills getAllBillHistory() {
+        List<Bill> billList = billRepository.findAllByUserId(USER_ID);
         Bills bills = new Bills();
         bills.setBills(billList);
         return bills;
