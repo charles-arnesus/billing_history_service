@@ -1,3 +1,8 @@
+# Add docker-compose-wait tool -------------------
+ENV WAIT_VERSION 2.7.2
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/$WAIT_VERSION/wait /wait
+RUN chmod +x /wait
+
 # temp container to build using gradle
 FROM gradle:6.6.1-jdk8 AS TEMP_BUILD_IMAGE
 ENV APP_HOME=/usr/app/
